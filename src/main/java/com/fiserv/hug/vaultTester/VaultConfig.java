@@ -17,7 +17,12 @@ public class VaultConfig extends AbstractVaultConfiguration {
     
     @Override
     public VaultEndpoint vaultEndpoint() {
+	System.out.println(Main.vault);
+	System.out.println(Main.vault);
         URI uri = URI.create(Main.vault);
+	System.out.println("This is is: " + uri.toString());
+	System.out.println(Main.vault);
+	System.out.println(Main.vault);
         return VaultEndpoint.from(uri);
     }
 

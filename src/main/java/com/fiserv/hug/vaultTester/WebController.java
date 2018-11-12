@@ -3,6 +3,7 @@ package com.fiserv.hug.vaultTester;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.vault.core.VaultTemplate;
 import org.springframework.vault.support.VaultResponseSupport;
@@ -90,4 +91,18 @@ public class WebController {
         return m.group().replaceAll("\"", "").replace("vault:", "");
     }
 */
+    @GetMapping("/api/setgethealthcheck")
+    public void setgethealthcheck() throws Exception {
+        System.out.println("/api/setgethealthcheck was called");
+        String name = UUID.randomUUID().toString();
+        String city = UUID.randomUUID().toString();
+        String paces = UUID.randomUUID().toString();
+        set(name, city, paces);
+        System.out.println("Healthcheck just set hunt " + name + ":" + city + ":" + paces);
+        TreasureHunt ret = get(name).getData();
+        if (!(ret.getNumberOfPaces().equals(paces) && ret.getStartingCity().equals(city))) {
+            throw new Exception("Vault gave me back a different values than i put in");
+        }
+        deletHunt(name);
+    }
 }

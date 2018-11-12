@@ -161,4 +161,5 @@ restResponse += 'curl -X GET "https://' + localhost + '/api/vault/{huntName}"<br
 restResponse += 'curl -X DELETE "https://' + localhost + '/api/vault/{huntName}"<br>';
 restResponse += 'curl -X GET "https://' + localhost + '/api/vault/list"<br>';
 restResponse += 'curl -X GET "https://' + localhost + '/api/vault/vcap"<br>';
+restResponse += 'curl -X GET "https://' + localhost + '/api/setgethealthcheck"<br>';
 $('#response-body-rest').html(restResponse);
